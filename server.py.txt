@@ -1,0 +1,30 @@
+import flask
+from random import shuffle
+
+app = flask.Flask(__name__)
+
+@app.route('/')
+def index():
+    return flask.render_template('index.html') 
+
+#-----------------
+# Do NOT Change Code Above This Line
+#-----------------
+
+# Write route /scramble here
+# Write function sentence_scrambler() here
+@app.route('/scramble', methods=['GET'])
+def sentence_scrambler():
+    #sentence = ('This is just for testing')
+    words = request.args.get('text')
+    words = sentence.split()    
+   # print(words)
+    shuffle(words)
+    #print(words)
+    return flask.render_template('scramble.html',scrambled = words)
+#-----------------
+# Do NOT Write Code Below This Line
+#-----------------
+
+app.run(host='0.0.0.0', port='5000')
+
